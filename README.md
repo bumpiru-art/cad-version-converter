@@ -10,10 +10,9 @@ DWG는 공개되지 않은 형식이라, 직접 구현하기보다 검증된 ODA
 
 1. **ODA File Converter 설치** (무료): <https://www.opendesign.com/guestfiles/oda_file_converter>
    기본 위치(`C:\Program Files\ODA\...`)에 설치하면 프로그램이 알아서 찾습니다.
-2. 둘 중 하나로 실행합니다.
-   - **exe 파일**: GitHub의 *Actions* 탭 → 최근 *Build Windows exe* 실행 → `CADVersionConverter` 내려받기
-     (또는 `build.bat`을 더블클릭해 직접 만들면 `dist\CADVersionConverter.exe`가 생깁니다)
-   - **Python으로 바로 실행**: Python 3.9 이상에서 `python main.py` (추가 설치 없음)
+2. **[Releases](https://github.com/bumpiru-art/cad-version-converter/releases/latest)에서 `CADVersionConverter.exe`를 내려받아 더블클릭**하면 끝입니다. 설치할 것이 없습니다.
+
+   > Windows가 "PC 보호" 경고를 띄우면 `추가 정보` → `실행`을 누르세요. 서명되지 않은 새 프로그램이라 나오는 안내입니다.
 
 ## 사용법
 

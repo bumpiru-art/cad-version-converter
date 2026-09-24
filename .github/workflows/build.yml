@@ -3,8 +3,12 @@ name: Build Windows exe
 on:
   push:
     branches: [main]
+    tags: ["v*"]
   pull_request:
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -24,3 +28,11 @@ jobs:
         with:
           name: CADVersionConverter
           path: dist/CADVersionConverter.exe
+      - name: Publish release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/CADVersionConverter.exe
+          body: |
+            **CADVersionConverter.exe**를 내려받아 더블클릭하면 바로 실행됩니다 (설치 필요 없음).
+            DWG 변환에는 무료 프로그램인 ODA File Converter가 필요합니다: https://www.opendesign.com/guestfiles/oda_file_converter
