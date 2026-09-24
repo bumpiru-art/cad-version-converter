@@ -3,7 +3,6 @@ name: Build Windows exe
 on:
   push:
     branches: [main]
-    tags: ["v*"]
   pull_request:
   workflow_dispatch:
 
@@ -29,9 +28,13 @@ jobs:
           name: CADVersionConverter
           path: dist/CADVersionConverter.exe
       - name: Publish release
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: CAD 버전 변환기 v1.0.${{ github.run_number }}
+          target_commitish: ${{ github.sha }}
+          make_latest: true
           files: dist/CADVersionConverter.exe
           body: |
             **CADVersionConverter.exe**를 내려받아 더블클릭하면 바로 실행됩니다 (설치 필요 없음).
